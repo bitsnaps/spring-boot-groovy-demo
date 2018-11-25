@@ -1,0 +1,59 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.17.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+// because of Spock issue with groovy 2.5
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.corposense'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+// because of Spock issue with groovy 2.5
+ext['groovy.version']='2.5.1'
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.grails.org/grails/core" }
+
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-groovy-templates')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.codehaus.groovy:groovy')
+
+	compile 'org.grails:grails-gsp-spring-boot:1.0.0'
+
+/*
+	// We use GORM here instead of JPA
+	// not working with this versions
+	compile("org.grails:gorm-hibernate4-spring-boot:6.1.8.RELEASE")
+	compile "org.hibernate:hibernate-core:4.3.11.Final"
+	compile "org.hibernate:hibernate-ehcache:4.3.11.Final"
+	// working but causes Exceptions at runtime
+	compile("org.grails:gorm-hibernate5-spring-boot:6.1.0.RELEASE")
+	compile "org.hibernate:hibernate-core:5.1.0.Final"
+	compile "org.hibernate:hibernate-ehcache:5.1.0.Final"
+*/
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('com.h2database:h2')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
+
+}
