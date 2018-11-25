@@ -14,8 +14,8 @@ class HelloController {
     @Autowired
     PersonService personService
 
-    // for some reason this won't work anymore!
     @GetMapping('/')
+    @ResponseBody
     def hello(){
         'Hello Groovy!'
     }
