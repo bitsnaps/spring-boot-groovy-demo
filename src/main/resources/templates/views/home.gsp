@@ -4,7 +4,7 @@
     </head>
     <body>
 
-        <h1>Welcome to Spring Boot with Groovy!</h1>
+        <h1>Welcome to Spring Boot with Groovy ${groovyVersion}!</h1>
 
         <!-- from PersonTagLib -->
         <p>Today: <g:dateFormat format="dd/MM/yyyy" date="${new Date()}" /></p>

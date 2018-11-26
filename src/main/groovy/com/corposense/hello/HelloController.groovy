@@ -22,8 +22,7 @@ class HelloController {
 
     @RequestMapping('/home')
     def home(){
-        new ModelAndView('views/home', [bootVersion: Banner.simpleName,
-            groovyVersion: GroovySystem.version])
+        new ModelAndView('views/home', [groovyVersion: GroovySystem.version])
     }
 
     @RequestMapping('/person/list')

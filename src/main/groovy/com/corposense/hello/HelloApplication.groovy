@@ -1,7 +1,6 @@
 package com.corposense.hello
 
 import groovy.transform.CompileStatic
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
@@ -10,12 +9,9 @@ import org.springframework.context.annotation.Bean
 @CompileStatic
 class HelloApplication {
 
-	@Autowired
-	PersonRepository personRepository
-
 	// Initialize App with some data
 	@Bean
-	def sendDatabase() {
+	def loadData(PersonRepository personRepository) {
 		[
 				new Person(id:1, name:"Ibrahim"),
 				new Person(id:2, name:"Ali"),
